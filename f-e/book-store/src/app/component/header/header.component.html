@@ -1,0 +1,173 @@
+<header class="header trans_300">
+  <!-- Top Navigation -->
+  <div class="top_nav">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="top_nav_left">Chúng tôi hân hạnh được đọc sách cùng bạn </div>
+        </div>
+        <div class="col-md-6 text-right">
+          <div class="top_nav_right">
+            <ul class="top_nav_menu">
+              <!-- Currency / Language / My Account -->
+              <li class="account" *ngIf="!isSignIn">
+                <a href="#">
+                  Đăng nhập
+                  <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="account_selection">
+                  <li><a routerLink="/login"><i aria-hidden="true" class="fa fa-sign-in"></i>Đăng nhập</a>
+                  </li>
+                  <li><a routerLink="/login"><i aria-hidden="true" class="fa fa-user-plus"></i>Đăng ký</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="account" *ngIf="isSignIn">
+                <a href="#">
+                  {{username}}
+                  <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="account_selection">
+                  <li>
+                    <a (click)="logout($event)" routerLink="/login">
+                      <i aria-hidden="true" class="fa fa-user-circle-o"> </i>
+                      Thông tin tài khoản</a>
+                  </li>
+                  <li>
+                    <a (click)="logout($event)" routerLink="/login">
+                      <i aria-hidden="true" class="fa fa-clock-o"> </i>
+                      Lịch sử mua hàng</a>
+                  </li>
+                  <li>
+                    <a (click)="logout($event)" routerLink="/login">
+                      <i aria-hidden="true" class="fa fa-sign-in"> </i>
+                      Đăng xuất</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation -->
+
+  <div class="main_nav_container" style="background-color: #53b5aa ;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-right">
+          <div class="logo_container">
+            <a routerLink="/">Book<span>code</span></a>
+          </div>
+          <nav class="navbar">
+            <ul class="navbar_menu">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                  <i class="fa-solid fa-cart-shopping-fast"></i> Dịch Vụ
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <div class="container">
+                    <div class="row" style="width: 100%">
+                      <div class="col-md-4">
+                        <ul class="nav flex-column">
+                          <li class="nav-item">
+                            <a class="nav-link active" href="#">Sách Giáo Khoa </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Văn Học </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Tiểu Thuyết </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <!-- /.col-md-4  -->
+                      <div class="col-md-4">
+                        <ul class="nav flex-column">
+                          <li class="nav-item">
+                            <a class="nav-link active" href="#">Văn Học Việt </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Sách Thiên Ân </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Nhà Sách Của Tôi</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <!-- /.col-md-4  -->
+                      <div class="col-md-4">
+                        <a href="">
+                          <img src="https://impact.com/wp-content/uploads/2019/06/YouTube_Logo.png" alt="" class="img-fluid">
+                        </a>
+                        <p class="text-white">Xem Tôi trên Youtube </p>
+
+                      </div>
+                      <!-- /.col-md-4  -->
+                    </div>
+                  </div>
+                  <!--  /.container  -->
+
+
+                </div>
+              </li>
+              <li><a href="#">Sách bán chạy</a></li>
+              <li><a href="#">Chương trình khuyến mãi</a></li>
+              <li><a href="#">Giảm giá đặc biệt</a></li>
+            </ul>
+            <ul class="navbar_user">
+              <li class="checkout">
+                <a routerLink="/cart"> Giỏ Hàng
+                  <span *ngIf="productQuantityInCart > 0" class="checkout_items"  style="margin-left: 35px;"
+                        id="checkout_items">{{productQuantityInCart}}</span>
+                </a>
+              </li>
+            </ul>
+            <div class="hamburger_container">
+              <i aria-hidden="true" class="fa fa-bars"></i>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<div class="fs_menu_overlay"></div>
+<div class="hamburger_menu">
+  <div class="hamburger_close"><i aria-hidden="true" class="fa fa-times"></i></div>
+  <div class="hamburger_menu_content text-right">
+    <ul class="menu_top_nav">
+      <li class="menu_item has-children">
+        <a href="#">
+          Đăng nhập
+          <i class="fa fa-angle-down"></i>
+        </a>
+        <ul class="menu_selection">
+          <li><a routerLink="/login"><i aria-hidden="true" class="fa fa-sign-in"></i>Đăng nhập</a></li>
+          <li><a href="#"><i aria-hidden="true" class="fa fa-user-plus"></i>Đăng ký</a></li>
+        </ul>
+      </li>
+      <li class="menu_item has-children">
+        <a href="#">
+          Danh mục sách
+          <i class="fa fa-angle-down"></i>
+        </a>
+        <ul class="menu_selection">
+          <li><a href="#">Văn học Việt Nam</a></li>
+          <li><a href="#">Văn học nước ngoài</a></li>
+          <li><a href="#">Thiếu nhi</a></li>
+          <li><a href="#">Thời sự - Chính trị</a></li>
+        </ul>
+      </li>
+      <li class="menu_item"><a href="#">Sách bán chạy</a></li>
+      <li class="menu_item"><a href="#">Chương trình khuyến mãi</a></li>
+      <li class="menu_item"><a href="#">Giảm giá đặc biệt</a></li>
+    </ul>
+  </div>
+</div>
+

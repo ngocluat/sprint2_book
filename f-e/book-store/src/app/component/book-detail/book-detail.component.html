@@ -1,0 +1,551 @@
+<div class="row" style="margin-top: 200px">
+  <div class="col-lg-11">
+    <div id="content-wrap" style="margin-top: 40px">
+      <div class="book-infomation">
+        <div class="img-book">
+          <a href="">
+            <div class="container">
+              <div class="book">
+                <div class="front">
+                  <div class="cover">
+                    <img src="{{book.image}}">
+                  </div>
+                </div>
+                <div class="left-side">
+                  <h2>
+                    <span>George Orwell</span>
+                    <span>1984</span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!--==============INFOMATION OF BOOK======================= -->
+        <div class="info-book">
+          <h1> {{book.name}} </h1>
+          <!-------------------TAG------------------------------------->
+          <p class="tag">
+            <a href="" style="background-color: #c0fcff; border-radius: 20px"
+               class="bluetag">Giá: {{book.price | number}}VND </a>
+            <span class="bluetag">Thể Loại: {{book.category.name}}</span>
+            <a
+              href="https://www.google.com/search?q={{book.author.name}}&hl=vi&authuser=0&tbm=isch&sxsrf=ALiCzsZ9NXb7qsvnbt_uU7c-HAk1We_QvQ%3A1658241489031&source=hp&biw=1280&bih=587&ei=0MHWYt6sO-XT2roPiPiOgAM&iflsig=AJiK0e8AAAAAYtbP4cvS6mQcjk5GMkPiTo5AHEJpFVmX&oq=&gs_lcp=CgNpbWcQARgAMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnUABYAGDaC2gBcAB4AIABAIgBAJIBAJgBAKoBC2d3cy13aXotaW1nsAEK&sclient=img"
+              class="redtag" target="_blank">Tác Giả: {{book.author.name}} </a>
+          <div class="clearfix"></div>
+          <!----------------INTRO----------------------------------->
+          <p class="intro">
+            Ngày Sản Xuất: {{book.releaseDate}}
+          </p>
+          <!-----------------TRAFFIC---------------------------->
+          <p class="traffic">
+            <em class="like" style="background-color: #ffb2cd; border-radius: 20px"></em>
+            <cite>Yêu thích</cite>
+            <i>|</i>
+            <em class="view">167845</em>
+            <cite>Lượt xem</cite>
+            <i>|</i>
+            <em class="follow">9191</em>
+            <cite>Theo dõi</cite>
+            <i>|</i>
+            <em class="nominate">0</em>
+            <cite>Đề xuất</cite>
+          </p>
+
+          <a class="btn btn-primary btn-lg btn-3d button">Đọc truyện</a>
+          <a class="btn btn-primary btn-lg btn-3d likebtn" style="background-color: #ff7595">Yêu thích</a>
+          <a class="btn btn-primary btn-lg btn-3d likebtn" (click)="addItemToCart()">Thêm vào giỏ..</a>
+          <a class="btn btn-primary btn-lg btn-3d likebtn" title="Bạn Có chắc chắn mua " [routerLink]="['/cart']"
+             style="background-color: #90ff83">Mua</a>
+        </div>
+        <!--==============RATING==================================-->
+        <div class="ratingWrap">
+          <cite class="score">4.7</cite>
+          <div class="clearfix"></div>
+          <p><span class="amount-rate"> 955</span> đánh giá</p>
+          <div class="clearfix"></div>
+          <h5 style="color: black"> Bạn thấy truyện này thế nào? </h5>
+          <div class="rating-star">
+            <img src="  https://truyen.tangthuvien.vn/images/star-off.b2a1b.png " title="tuyệt cú mèo" alt=1>
+            <img src=" https://truyen.tangthuvien.vn/images/star-on.02731.png " title="coi bộ hay đó chứ" alt=2>
+            <img src=" https://truyen.tangthuvien.vn/images/star-on.02731.png " title="ờ, cũng ổn" alt=3>
+            <img src=" https://truyen.tangthuvien.vn/images/star-on.02731.png " title="khá tệ" alt=4>
+            <img src=" https://truyen.tangthuvien.vn/images/star-on.02731.png " title="quá trời tệ" alt=5>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="content-nav">
+        <ul>
+          <li><a class="detail-book-tab">Thông tin chi tiết</a></li>
+          <li><a class="catalog-book-tab">Danh sách chương (<span class="catalog-num">112</span>
+            chương)</a></li>
+          <li><a class="comment-book-tab" href="#comment-area">Bình luận</a></li>
+          <div class="clearfix"></div>
+        </ul>
+      </div>
+      <!--============INFO_BOOK_TAB=====================--->
+      <div class="info-book-tab">
+        <!--------------LEFT_COL----------------------------->
+        <div class="left-col">
+          <!-------------Info-detail----------------------------->
+          <div class="info-detail">
+            <div class="book-intro">
+              <p> {{book.description}}</p>
+            </div>
+          </div>
+          <div class="book-state">
+            <ul>
+              <!--- UPDATOR ------------->
+              <li>
+                <p> Người đăng </p>
+                <div class="updator">
+                  <a href="#" class="bluetag">{{book.author.name}} </a>
+                </div>
+              </li>
+              <div class="clearfix"></div>
+              <!--- NEW CATALOG ------------->
+              <li>
+                <p> Chương mới </p>
+                <div class="new-catalog">
+                  <a href="#"> ( Phiên Ngoại Truyện) {{book.name}} (2). </a>
+                  <h6> Oct 21, 2019 02:05 pm </h6>
+                </div>
+              </li>
+              <div class="clearfix"></div>
+              <!--- Tags------------->
+              <!--              <li>-->
+              <!--                <p> Tags </p>-->
+              <!--                <div class="tags">-->
+              <!--                  <a href="#" class="bluetag"> Dũng mãnh </a>-->
+              <!--                  <a href="#" class="bluetag"> Huyền học </a>-->
+              <!--                  <a href="#" class="bluetag"> Luyện công lưu</a>-->
+              <!--                  <a href="#" class="bluetag"> Đông phương huyền huyễn </a>-->
+              <!--                </div>-->
+              <!--              </li>-->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<div class="super_container">-->
+<!--  <div class="container single_product_container">-->
+<!--    <div class="row">-->
+<!--      <div class="col">-->
+
+<!--        &lt;!&ndash; Breadcrumbs &ndash;&gt;-->
+
+<!--        <div class="breadcrumbs d-flex flex-row align-items-center">-->
+<!--          <ul>-->
+<!--            <li><a routerLink="'/'">Trang chủ</a></li>-->
+<!--            <li><a routerLink="'/'"><i aria-hidden="true" class="fa fa-angle-right"></i>{{book.category.name}}</a></li>-->
+<!--            <li class="active"><a href="#"><i aria-hidden="true" class="fa fa-angle-right"></i>{{book.name}}</a></li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="row">-->
+<!--      <div class="col-lg-6">-->
+<!--        <div class="single_product_image" style="height: 500px; width: 500px !important;">-->
+<!--          <div class="single_product_image_background">-->
+<!--            <img alt="book_image"-->
+<!--                 [src]="book.image">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-lg-6">-->
+<!--        <div class="product_details">-->
+<!--          <div class="product_details_title">-->
+<!--            <h2>{{book.name}}</h2>-->
+<!--            <ul class="cart-total-chart">-->
+<!--              <li><span>Tác giả</span> <span class="font-weight-bold">{{book.author.name}}</span></li>-->
+<!--              <li><span>Dịch giả</span> <span *ngIf="book.translator">{{book.translator}}</span></li>-->
+<!--              <li><span>Nhà xuất bản</span> <span>{{book.publisher}}</span></li>-->
+<!--              <li><span>Tổng số trang</span> <span>{{book.totalPage}}</span></li>-->
+<!--              <li><span>Kích thước</span> <span>{{book.dimension}}</span></li>-->
+<!--              <li><span>Ngày phát hành</span> <span>{{book.releaseDate}}</span></li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--          <div class="free_delivery d-flex flex-row align-items-center justify-content-center">-->
+<!--            <span class="ti-truck"></span><span>Miễn phí giao hàng</span>-->
+<!--          </div>-->
+<!--          <div class="original_price">{{book.price|number}} VND</div>-->
+<!--            <div class="product_price_single">{{(book.price) * (100 - discount)/100 | number}}  VND</div>-->
+<!--          <ul class="star_rating">-->
+<!--            <li><i aria-hidden="true" class="fa fa-star"></i></li>-->
+<!--            <li><i aria-hidden="true" class="fa fa-star"></i></li>-->
+<!--            <li><i aria-hidden="true" class="fa fa-star"></i></li>-->
+<!--            <li><i aria-hidden="true" class="fa fa-star"></i></li>-->
+<!--            <li><i aria-hidden="true" class="fa fa-star"></i></li>-->
+<!--          </ul>-->
+
+<!--          <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">-->
+<!--            <span style="width: 70px">Số lượng:</span>-->
+<!--            <div class="quantity_selector">-->
+<!--              <span class="minus" (click)="decreaseQuantity()"><i aria-hidden="true" class="fa fa-minus"></i></span>-->
+<!--              <span id="quantity_value">{{quantity}}</span>-->
+<!--              <span class="plus" (click)="increaseQuantity()"><i aria-hidden="true" class="fa fa-plus"></i></span>-->
+<!--            </div>-->
+<!--            <div class="red_button add_to_cart_button_single"><a class="btn p-1" (click)="addItemToCart()">Thêm vào giỏ-->
+<!--              hàng</a></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--  </div>-->
+
+<!--  &lt;!&ndash; Tabs &ndash;&gt;-->
+
+<!--  <div class="tabs_section_container">-->
+
+<!--    <div class="container">-->
+<!--      <div class="row">-->
+<!--        <div class="col">-->
+<!--          <div class="tabs_container">-->
+<!--            <ul-->
+<!--              class="tabs d-flex flex-sm-row flex-column align-items-left align-items-md-center justify-content-center">-->
+<!--              <li class="tab active" data-active-tab="tab_1"><span>Mô tả sản phẩm</span></li>-->
+<!--              <li class="tab" data-active-tab="tab_2"><span>Thông tin chi tiết</span></li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="row">-->
+<!--        <div class="col">-->
+
+<!--          &lt;!&ndash; Tab Description &ndash;&gt;-->
+
+<!--          <div class="tab_container active" id="tab_1">-->
+<!--            <div class="row">-->
+<!--              <div class="col-lg-12 desc_col">-->
+<!--                <div class="tab_title">-->
+<!--                  <h4>Mô tả sản phẩm</h4>-->
+<!--                </div>-->
+<!--                <div class="tab_text_block">-->
+<!--                  <p>{{book.description}}</p>-->
+<!--                </div>-->
+
+<!--              </div>-->
+
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          &lt;!&ndash; Tab Additional Info &ndash;&gt;-->
+
+<!--          <div class="tab_container" id="tab_2">-->
+<!--            <div class="row">-->
+<!--              <div class="col additional_info_col">-->
+<!--                <div class="tab_title additional_info_title">-->
+<!--                  <h4>Thông tin chi tiết</h4>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--  </div>-->
+
+<!--  &lt;!&ndash; Có thể bạn cũng thích &ndash;&gt;-->
+<!--  <div class="slider-card">-->
+<!--    <div class="container">-->
+<!--      <div class="row">-->
+<!--        <div class="col text-center">-->
+<!--          <div class="section_title new_arrivals_title">-->
+<!--            <h2>Có thể bạn cũng thích</h2>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="custom-slider-nav" style="margin-top: 40px">-->
+<!--        <owl-carousel-o [options]="customOptions">-->
+<!--          &lt;!&ndash; Slide 1 &ndash;&gt;-->
+<!--          <ng-template carouselSlide *ngFor="let item of relativeBookList">-->
+<!--            <div class="owl-item product_slider_item">-->
+<!--              <div class="product-item" [routerLink]="['/book-detail',item.id]">-->
+<!--                <div class="product discount">-->
+<!--                  <div class="product_image">-->
+<!--                    <img alt=""-->
+<!--                         [src]="item.image">-->
+<!--                  </div>-->
+<!--                  <div-->
+<!--                    class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">-->
+<!--                    <span>-30%</span></div>-->
+<!--                  <div class="favorite favorite_left"></div>-->
+<!--                  <div class="product_info">-->
+<!--                    <h6 class="product_name"><a href="#">{{item.name}}</a>-->
+<!--                    </h6>-->
+<!--                    <div class="product_price">{{item.price|currency:'VND':''}} đ<span>150.000 đ</span></div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </ng-template>-->
+
+<!--          &lt;!&ndash;          &lt;!&ndash; Slide 2 &ndash;&gt;&ndash;&gt;-->
+<!--          &lt;!&ndash;          <ng-template carouselSlide>&ndash;&gt;-->
+<!--          &lt;!&ndash;            <div class="owl-item product_slider_item">&ndash;&gt;-->
+<!--          &lt;!&ndash;              <div class="product-item women">&ndash;&gt;-->
+<!--          &lt;!&ndash;                <div class="product">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="product_image">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <img alt=""&ndash;&gt;-->
+<!--          &lt;!&ndash;                         src="https://nhasachphuongnam.com/images/thumbnails/2560/2560/detailed/231/8103tUuMVFL.jpg">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div&ndash;&gt;-->
+<!--          &lt;!&ndash;                    class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <span>-30%</span></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="favorite favorite_left"></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="product_info">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <h6 class="product_name"><a href="product-detail.html">The God Game: A Novel</a>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </h6>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <div class="product_price">319.000 đ <span>400.000 đ</span></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;              </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;          </ng-template>&ndash;&gt;-->
+
+<!--          &lt;!&ndash;          &lt;!&ndash; Slide 3 &ndash;&gt;&ndash;&gt;-->
+<!--          &lt;!&ndash;          <ng-template carouselSlide>&ndash;&gt;-->
+<!--          &lt;!&ndash;            <div class="owl-item product_slider_item">&ndash;&gt;-->
+<!--          &lt;!&ndash;              <div class="product-item women">&ndash;&gt;-->
+<!--          &lt;!&ndash;                <div class="product">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="product_image">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <img alt=""&ndash;&gt;-->
+<!--          &lt;!&ndash;                         src="https://nhasachphuongnam.com/images/thumbnails/500/500/detailed/232/den-khong-hat-bong-tb-2022.jpg">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div&ndash;&gt;-->
+<!--          &lt;!&ndash;                    class="product_bubble product_bubble_right product_bubble_green d-flex flex-column align-items-center">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <span>Mới</span></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="favorite favorite_left"></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="product_info">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <h6 class="product_name"><a href="product-detail.html">Đèn không hắt bóng (Tái bản&ndash;&gt;-->
+<!--          &lt;!&ndash;                      năm 2022)</a></h6>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <div class="product_price">197.000 đ</div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;              </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;          </ng-template>&ndash;&gt;-->
+<!--          &lt;!&ndash;          <ng-template carouselSlide>&ndash;&gt;-->
+<!--          &lt;!&ndash;            &lt;!&ndash; Slide 4 &ndash;&gt;&ndash;&gt;-->
+
+<!--          &lt;!&ndash;            <div class="owl-item product_slider_item">&ndash;&gt;-->
+<!--          &lt;!&ndash;              <div class="product-item accessories">&ndash;&gt;-->
+<!--          &lt;!&ndash;                <div class="product">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="product_image">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <img alt=""&ndash;&gt;-->
+<!--          &lt;!&ndash;                         src="https://nhasachphuongnam.com/images/thumbnails/500/500/detailed/232/artemis-cuoc-chien-tren-mat-trang.jpg">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="favorite favorite_left"></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div&ndash;&gt;-->
+<!--          &lt;!&ndash;                    class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <span>-20%</span></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="product_info">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <h6 class="product_name"><a href="product-detail.html">Artemis - Cuộc Chiến Trên Mặt&ndash;&gt;-->
+<!--          &lt;!&ndash;                      Trăng</a></h6>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <div class="product_price">169.000 đ<span>180.000 đ</span></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;              </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;          </ng-template>&ndash;&gt;-->
+<!--          &lt;!&ndash;          <ng-template carouselSlide>&ndash;&gt;-->
+<!--          &lt;!&ndash;            &lt;!&ndash; Slide 5 &ndash;&gt;&ndash;&gt;-->
+
+<!--          &lt;!&ndash;            <div class="owl-item product_slider_item">&ndash;&gt;-->
+<!--          &lt;!&ndash;              <div class="product-item women men">&ndash;&gt;-->
+<!--          &lt;!&ndash;                <div class="product">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="product_image">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <img alt=""&ndash;&gt;-->
+<!--          &lt;!&ndash;                         src="https://nhasachphuongnam.com/images/thumbnails/500/500/detailed/153/what-happened-dieu-gi-da-dien-ra.jpg">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div&ndash;&gt;-->
+<!--          &lt;!&ndash;                    class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <span>-30%</span></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="favorite favorite_left"></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="product_info">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <h6 class="product_name"><a href="product-detail.html">Điều gì đã diễn ra</a></h6>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <div class="product_price">155.000 đ <span>250.000 đ</span></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;              </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;          </ng-template>&ndash;&gt;-->
+<!--          &lt;!&ndash;          <ng-template carouselSlide>&ndash;&gt;-->
+<!--          &lt;!&ndash;            &lt;!&ndash; Slide 1 &ndash;&gt;&ndash;&gt;-->
+
+<!--          &lt;!&ndash;            <div class="owl-item product_slider_item">&ndash;&gt;-->
+<!--          &lt;!&ndash;              <div class="product-item">&ndash;&gt;-->
+<!--          &lt;!&ndash;                <div class="product discount">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="product_image">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <img alt=""&ndash;&gt;-->
+<!--          &lt;!&ndash;                         src="https://nhasachphuongnam.com/images/thumbnails/500/500/detailed/141/truong-hoc-hay-truong-doi.jpg">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div&ndash;&gt;-->
+<!--          &lt;!&ndash;                    class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <span>-30%</span></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="favorite favorite_left"></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="product_info">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <h6 class="product_name"><a href="product-detail.html">Trường học hay trường đời</a>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </h6>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <div class="product_price">90.000 đ <span>150.000 đ</span></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;              </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;          </ng-template>&ndash;&gt;-->
+
+<!--          &lt;!&ndash;          &lt;!&ndash; Slide 2 &ndash;&gt;&ndash;&gt;-->
+<!--          &lt;!&ndash;          <ng-template carouselSlide>&ndash;&gt;-->
+<!--          &lt;!&ndash;            <div class="owl-item product_slider_item">&ndash;&gt;-->
+<!--          &lt;!&ndash;              <div class="product-item women">&ndash;&gt;-->
+<!--          &lt;!&ndash;                <div class="product">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="product_image">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <img alt=""&ndash;&gt;-->
+<!--          &lt;!&ndash;                         src="https://nhasachphuongnam.com/images/thumbnails/2560/2560/detailed/231/8103tUuMVFL.jpg">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div&ndash;&gt;-->
+<!--          &lt;!&ndash;                    class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <span>-30%</span></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="favorite favorite_left"></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="product_info">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <h6 class="product_name"><a href="product-detail.html">The God Game: A Novel</a>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </h6>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <div class="product_price">319.000 đ <span>400.000 đ</span></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;              </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;          </ng-template>&ndash;&gt;-->
+
+<!--          &lt;!&ndash;          &lt;!&ndash; Slide 3 &ndash;&gt;&ndash;&gt;-->
+<!--          &lt;!&ndash;          <ng-template carouselSlide>&ndash;&gt;-->
+<!--          &lt;!&ndash;            <div class="owl-item product_slider_item">&ndash;&gt;-->
+<!--          &lt;!&ndash;              <div class="product-item women">&ndash;&gt;-->
+<!--          &lt;!&ndash;                <div class="product">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="product_image">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <img alt=""&ndash;&gt;-->
+<!--          &lt;!&ndash;                         src="https://nhasachphuongnam.com/images/thumbnails/500/500/detailed/232/den-khong-hat-bong-tb-2022.jpg">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div&ndash;&gt;-->
+<!--          &lt;!&ndash;                    class="product_bubble product_bubble_right product_bubble_green d-flex flex-column align-items-center">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <span>Mới</span></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="favorite favorite_left"></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="product_info">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <h6 class="product_name"><a href="product-detail.html">Đèn không hắt bóng (Tái bản&ndash;&gt;-->
+<!--          &lt;!&ndash;                      năm 2022)</a></h6>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <div class="product_price">197.000 đ</div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;              </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;          </ng-template>&ndash;&gt;-->
+<!--          &lt;!&ndash;          <ng-template carouselSlide>&ndash;&gt;-->
+<!--          &lt;!&ndash;            &lt;!&ndash; Slide 4 &ndash;&gt;&ndash;&gt;-->
+
+<!--          &lt;!&ndash;            <div class="owl-item product_slider_item">&ndash;&gt;-->
+<!--          &lt;!&ndash;              <div class="product-item accessories">&ndash;&gt;-->
+<!--          &lt;!&ndash;                <div class="product">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="product_image">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <img alt=""&ndash;&gt;-->
+<!--          &lt;!&ndash;                         src="https://nhasachphuongnam.com/images/thumbnails/500/500/detailed/232/artemis-cuoc-chien-tren-mat-trang.jpg">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="favorite favorite_left"></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div&ndash;&gt;-->
+<!--          &lt;!&ndash;                    class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <span>-20%</span></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="product_info">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <h6 class="product_name"><a href="product-detail.html">Artemis - Cuộc Chiến Trên Mặt&ndash;&gt;-->
+<!--          &lt;!&ndash;                      Trăng</a></h6>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <div class="product_price">169.000 đ<span>180.000 đ</span></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;              </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;          </ng-template>&ndash;&gt;-->
+<!--          &lt;!&ndash;          <ng-template carouselSlide>&ndash;&gt;-->
+<!--          &lt;!&ndash;            &lt;!&ndash; Slide 5 &ndash;&gt;&ndash;&gt;-->
+
+<!--          &lt;!&ndash;            <div class="owl-item product_slider_item">&ndash;&gt;-->
+<!--          &lt;!&ndash;              <div class="product-item women men">&ndash;&gt;-->
+<!--          &lt;!&ndash;                <div class="product">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="product_image">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <img alt=""&ndash;&gt;-->
+<!--          &lt;!&ndash;                         src="https://nhasachphuongnam.com/images/thumbnails/500/500/detailed/153/what-happened-dieu-gi-da-dien-ra.jpg">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div&ndash;&gt;-->
+<!--          &lt;!&ndash;                    class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <span>-30%</span></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="favorite favorite_left"></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <div class="product_info">&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <h6 class="product_name"><a href="product-detail.html">Điều gì đã diễn ra</a></h6>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <div class="product_price">155.000 đ <span>250.000 đ</span></div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;              </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;          </ng-template>&ndash;&gt;-->
+<!--        </owl-carousel-o>-->
+<!--      </div>-->
+
+
+<!--    </div>-->
+<!--  </div>-->
+
+
+<!--  &lt;!&ndash; Benefit &ndash;&gt;-->
+
+<!--  <div class="benefit">-->
+<!--    <div class="container">-->
+<!--      <div class="row benefit_row">-->
+<!--        <div class="col-lg-3 benefit_col">-->
+<!--          <div class="benefit_item d-flex flex-row align-items-center">-->
+<!--            <div class="benefit_icon"><i aria-hidden="true" class="fa fa-truck"></i></div>-->
+<!--            <div class="benefit_content">-->
+<!--              <h6>Miễn phí giao hàng</h6>-->
+<!--              <p>Cho đơn hàng trên 150.000 đ</p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="col-lg-3 benefit_col">-->
+<!--          <div class="benefit_item d-flex flex-row align-items-center">-->
+<!--            <div class="benefit_icon"><i aria-hidden="true" class="fa fa-money"></i></div>-->
+<!--            <div class="benefit_content">-->
+<!--              <h6>Thanh toán tiền mặt</h6>-->
+<!--              <p>Cho khách hàng mua trên 3 đơn</p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="col-lg-3 benefit_col">-->
+<!--          <div class="benefit_item d-flex flex-row align-items-center">-->
+<!--            <div class="benefit_icon"><i aria-hidden="true" class="fa fa-undo"></i></div>-->
+<!--            <div class="benefit_content">-->
+<!--              <h6>Đổi trả trong 30 ngày</h6>-->
+<!--              <p>Nếu lỗi do nhà sản xuất</p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="col-lg-3 benefit_col">-->
+<!--          <div class="benefit_item d-flex flex-row align-items-center">-->
+<!--            <div class="benefit_icon"><i aria-hidden="true" class="fa fa-clock-o"></i></div>-->
+<!--            <div class="benefit_content">-->
+<!--              <h6>Hỗ trợ 24/24</h6>-->
+<!--              <p>Hoàn toàn Miễn phí</p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+<!--</div>-->
+
+

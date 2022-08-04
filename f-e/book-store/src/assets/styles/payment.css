@@ -1,0 +1,68 @@
+/* -----------------------
+:: 19.0 Checkout Area CSS
+----------------------- */
+
+.checkout_details_area form label {
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.checkout_details_area form label span {
+    color: #ff084e;
+}
+
+.checkout_details_area form .form-control,
+.checkout_details_area form .custom-select {
+    height: 52px;
+    border: none;
+    background-color: #f4f2f8;
+    border-radius: 0;
+}
+
+.order-details-confirmation {
+    width: 100%;
+    border: 2px solid #ebebeb;
+    padding: 40px;
+}
+
+.order-details-confirmation .order-details-form li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 30px 0;
+    border-bottom: 2px solid #ebebeb;
+}
+
+.order-details-confirmation .card-header h6 a {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.order-details-confirmation .card-header h6 a i {
+    color: #9f9f9f;
+}
+
+.order-details-confirmation .card {
+    border: none;
+}
+
+.order-details-confirmation .card-header {
+    background-color: transparent;
+    border-bottom: none;
+}
+
+.order-details-confirmation .card-body p {
+    font-size: 12px;
+    line-height: 2;
+    color: #9f9f9f;
+}

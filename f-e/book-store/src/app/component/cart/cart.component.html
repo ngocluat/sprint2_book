@@ -1,0 +1,223 @@
+<div class="super_container">
+
+  <!-- CART DETAIL -->
+
+  <div class="cart_area section_padding_100 clearfix" style="margin-top: 12%">
+    <div *ngIf="cartDtoList == null || cartDtoList.length <1" class="container">
+      <div class="col-8 mx-auto mt-2">
+        <div class="shadow-lg bg-white p-3 rounded-lg">
+          <div class="d-flex justify-content-between border-bottom pb-8">
+            <h4 class="font-weight-bold">Giỏ hàng</h4>
+          </div>
+          <br>
+          <br>
+          <div class="col-4 mx-auto m-3 text-center">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/102/102661.png"
+              width="30%"
+              alt="empty cart">
+          </div>
+          <h5 class="text-center">Giỏ hàng của bạn đang trống</h5>
+          <div class="form-group row mt-4">
+            <div class="col-sm-3 mx-auto pb-1">
+              <button [routerLink]="['/home-page']" style="min-height: 45px"
+                      class="btn btn-outline-success btn-block">
+                Tiếp tục mua hàng
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" *ngIf="cartDtoList != null && cartDtoList.length >= 1">
+      <h3>Giỏ hàng</h3>
+      <div class="row">
+        <div class="col-12">
+          <div class="cart-table table-responsive">
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th class="col-6">SẢN PHẨM</th>
+                <th class="col-2 text-right">GIÁ</th>
+                <th class="col-2 text-center">SỐ LƯỢNG</th>
+                <th class="col-2 text-right">TỔNG TIỀN</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of cartDtoList">
+                <td class="col-6">
+                  <div class="d-flex align-items-center">
+                    <a class="mr-1" data-target="#deleteModal"
+                       data-toggle="modal" style="width: 20px !important;"
+                       (click)="getBookDelete(item.book)">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                           stroke-width="1.5"
+                           stroke="#8E9AAB" style="margin-right: 4px;">
+                        <path d="M17.9964 6L6.00391 17.9925" stroke="inherit"
+                              stroke-width="inherit"
+                              stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M18.0125 18.0125L6 6" stroke="inherit" stroke-width="inherit"
+                              stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </a>
+                    <img alt="Product"
+                         [src]=item.book.image
+                         width="100">
+                    <h6 class="pl-3">{{item.book.name}}</h6>
+                  </div>
+                </td>
+                <td class="col-2 text-right"><span>{{item.book.price|number}} VND</span></td>
+                <td class="col-2 pl-5">
+                  <div class="d-flex align-items-center justify-content-between product-quantity-group">
+                    <button class="btn btn-light" [disabled]="item.quantity<2"
+                            (click)="reduceItem(item.book)">-
+                    </button>
+                    <input readonly class="bg-success font-weight-bold" [value]=item.quantity>
+                    <button class="btn btn-light" (click)="increaseItem(item.book)">+</button>
+                  </div>
+                </td>
+                <td class="col-2 text-right"><strong>{{item.book.price * item.quantity|number}} VND</strong></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="d-flex justify-content-between mt-30">
+            <div class="col-sm-12 col-md-6 col-lg-4">
+              <a class="btn back-to-shop-btn" routerLink="/">Tiếp tục mua sắm</a>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4">
+              <button class="btn karl-checkout-btn" (click)="reload()">Cập nhật giỏ hàng</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 30px">
+        <div class="col-12 col-lg-6">
+          <div class="shipping-method-area mt-70">
+            <div class="cart-page-heading">
+              <h5 class="font-weight-bold">Hình thức giao hàng</h5>
+              <p>Lựa chọn hình thức giao hàng bạn muốn</p>
+            </div>
+
+            <div class="custom-control custom-radio mb-30 col-12">
+              <input class="custom-control-input" id="customRadio1" name="customRadio" type="radio">
+              <label class="custom-control-label"
+                     for="customRadio1"><span>Giao hàng nhanh </span><span
+                style="font-weight: bold">30.000 đ</span></label>
+            </div>
+
+            <div class="custom-control custom-radio mb-30 col-12">
+              <input class="custom-control-input" id="customRadio2" name="customRadio" type="radio">
+              <label class="custom-control-label d-flex align-items-center justify-content-between"
+                     for="customRadio2">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div>Giao hàng tiêu chuẩn</div>
+                  <div style="font-weight: bold">15.000 đ</div>
+                </div>
+              </label>
+            </div>
+
+            <div class="custom-control custom-radio col-12">
+              <input class="custom-control-input" id="customRadio3" name="customRadio" type="radio">
+              <label class="custom-control-label"
+                     for="customRadio3"><span>Giao hàng tiết kiệm </span><span
+                style="font-weight: bold">Miễn phí</span></label>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="cart-total-area mt-70">
+            <div class="cart-page-heading">
+              <h5 class="font-weight-bold">Tổng đơn hàng</h5>
+            </div>
+
+            <ul class="cart-total-chart">
+              <li><span>Tổng tiền hàng</span> <span>{{total|number}} VND</span></li>
+              <li><span>Phí vận chuyển</span> <span>Free</span></li>
+              <li><span><strong>Tổng thanh toán</strong></span>
+                <h4 style="color: #ff084e">
+                  <strong>{{total|number}} VND</strong></h4></li>
+            </ul>
+            <button class="btn karl-checkout-btn" (click)="confirmCart()">Tiến hành thanh toán</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Benefit -->
+
+  <div class="benefit" style="margin-top: 12%">
+    <div class="container">
+      <div class="row benefit_row">
+        <div class="col-lg-3 benefit_col">
+          <div class="benefit_item d-flex flex-row align-items-center">
+            <div class="benefit_icon"><i aria-hidden="true" class="fa fa-truck"></i></div>
+            <div class="benefit_content">
+              <h6>Miễn phí giao hàng</h6>
+              <p>Cho đơn hàng trên 150.000 đ</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 benefit_col">
+          <div class="benefit_item d-flex flex-row align-items-center">
+            <div class="benefit_icon"><i aria-hidden="true" class="fa fa-money"></i></div>
+            <div class="benefit_content">
+              <h6>Thanh toán tiền mặt</h6>
+              <p>Cho khách hàng mua trên 3 đơn</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 benefit_col">
+          <div class="benefit_item d-flex flex-row align-items-center">
+            <div class="benefit_icon"><i aria-hidden="true" class="fa fa-undo"></i></div>
+            <div class="benefit_content">
+              <h6>Đổi trả trong 7 ngày</h6>
+              <p>Nếu lỗi do nhà sản xuất</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 benefit_col">
+          <div class="benefit_item d-flex flex-row align-items-center">
+            <div class="benefit_icon"><i aria-hidden="true" class="fa fa-clock-o"></i></div>
+            <div class="benefit_content">
+              <h6>Hỗ trợ 24/24</h6>
+              <p>Hoàn toàn Miễn phí</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xóa Sách</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có chắc muốn xóa sách
+          <span class="text-danger font-weight-bold" id="nameDelete">{{bookDelete.name}}</span>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <div class="mx-auto row">
+          <button class="mx-2 btn btn-secondary" data-dismiss="modal">Quay lại</button>
+          <button class="mx-2 btn btn-danger"
+                  (click)="removeItem(bookDelete)"
+                  data-dismiss="modal">Xóa
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

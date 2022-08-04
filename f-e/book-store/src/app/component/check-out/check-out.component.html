@@ -1,0 +1,145 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-spin-clockwise" [fullScreen]="true"><p
+  style="color: white"> Vui lòng đợi ...</p></ngx-spinner>
+<div class="super_container">
+
+  <!-- CART DETAIL -->
+  <div class="cart_area section_padding_100 clearfix" style="margin-top: 12%">
+    <div *ngIf="(cartAndDetailDto | json) == '{}'" class="container">
+      <div class="col-8 mx-auto mt-2">
+        <div class="bg-white p-3 shadow-lg rounded-lg">
+          <div class="d-flex justify-content-between border-bottom pb-8">
+            <h3>Thanh toán</h3>
+          </div>
+          <br>
+          <br>
+          <div class="col-4 mx-auto m-3 text-center">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/102/102661.png"
+              width="30%"
+              alt="empty cart">
+          </div>
+          <h5 class="text-center">Bạn chưa xác nhận giỏ hàng cần thanh toán</h5>
+          <div class="form-group row mt-4">
+            <div class="col-sm-3 mx-auto pb-1">
+              <button [routerLink]="['/cart']" style="min-height: 45px"
+                      class="btn btn-outline-success btn-block">
+                Quay lại giỏ hàng
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" *ngIf="(cartAndDetailDto | json) != '{}'">
+      <div class="row">
+        <div class="col-xl-7 col-lg-12 mt-2">
+          <div class="cart-page-heading">
+            <h5 class="font-weight-bold">Thông tin giỏ hàng</h5>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="cart-table table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                  <tr>
+                    <th class="col-5">Sản phẩm</th>
+                    <th class="col-3 text-right">Giá</th>
+                    <th class="col-1 text-right">Số lượng</th>
+                    <th class="col-3 text-right">Tổng tiền</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let item of cartAndDetailDto.cartDtoList">
+                    <td class="col-5">
+                      <div class="d-flex align-items-center">
+                        <img alt="Product"
+                             [src]=item.book.image
+                             width="50">
+                        <h6 class="pl-3">{{item.book.name}}</h6>
+                      </div>
+                    </td>
+                    <td class="col-3 text-right"><span>{{item.book.price|number}} VND</span></td>
+                    <td class="col-1 pl-5">
+                      {{item.quantity}}
+                    </td>
+                    <td class="col-3 text-right"><strong>{{item.book.price * item.quantity|number}} VND</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="d-flex justify-content-between mt-30">
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                  <a class="btn back-to-shop-btn" routerLink="/cart">Quay lại giỏ hàng</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-5 col-lg-12 mt-2">
+          <div class="cart-total-area mt-70">
+            <div class="cart-page-heading">
+              <h5 class="font-weight-bold">Thông tin nhận hàng</h5>
+            </div>
+            <ul class="cart-total-chart">
+              <li><span>Khách hàng</span> <input class="form-control col-8" [value]="cartAndDetailDto.customer.name">
+              </li>
+              <li><span>Số điện thoại</span> <input class="form-control col-8"
+                                                    [value]="cartAndDetailDto.customer.phone"></li>
+              <li><span>Địa chỉ</span> <input class="form-control col-8" [value]="cartAndDetailDto.customer.address">
+              </li>
+              <li><span>Email</span>
+                <input class="form-control col-8" [value]="cartAndDetailDto.customer.email"></li>
+            </ul>
+          </div>
+
+          <div class="cart-total-area mt-4">
+            <div class="cart-page-heading">
+              <h5 class="font-weight-bold">Tổng đơn hàng</h5>
+            </div>
+            <ul class="cart-total-chart">
+              <li><span>Tổng tiền hàng</span> <span>{{cartAndDetailDto.total|number}} VND</span></li>
+              <li><span>Phí vận chuyển</span> <span>Free</span></li>
+              <li><span><strong>Tổng thanh toán</strong></span>
+                <h4 style="color: #ff084e">
+                  <strong>{{cartAndDetailDto.total|number}} VND</strong></h4></li>
+            </ul>
+            <div class="mt-2">
+              <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<!-- Button trigger modal -->
+<button id="buttonModal" hidden type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thanh toán</h5>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="isSuccess">
+          <p> Cảm ơn bạn mua sắm tại Pharmacode.</p>
+          <p> Đơn hàng của bạn đã được thanh toán thành công.</p>
+        </div>
+        <p *ngIf="isError">Liên kết Paypal hiện tại đang gặp lỗi, vui lòng thử lại sau!</p>
+      </div>
+      <div class="modal-footer">
+        <button *ngIf="isError" type="button" class="btn btn-secondary" id="disMissModal" data-dismiss="modal">Đóng</button>
+        <button *ngIf="isSuccess" type="button" class="btn btn-success" (click)="returnHome()">Về trang chủ</button>
+      </div>
+    </div>
+  </div>
+</div>

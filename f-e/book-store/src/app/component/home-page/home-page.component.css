@@ -475,7 +475,10 @@ h3 {
   margin: 10px auto;
   background-color: #cacaca;
 }
-
+.img{
+  width: 290px;
+  height: 198px;
+}
 .addr {
   margin: 0px;
 }

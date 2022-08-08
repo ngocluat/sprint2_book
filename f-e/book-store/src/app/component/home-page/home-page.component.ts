@@ -27,7 +27,7 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllBook({page: 0, size: 8});
+    this.getAllBook({page: 0, size: 10});
     new isotope();
   }
 
@@ -49,7 +49,7 @@ export class HomePageComponent implements OnInit {
     pullDrag: true,
     dots: true,
     // autoplay: true,
-    // autoplayTimeout: 800,
+    // autoplayTimeout: 1000,
     navSpeed: 700,
     navText: ['<i class="fa fa-caret-left"/>', '<i class="fa fa-caret-right"/>'],
     responsive: {
@@ -71,7 +71,7 @@ export class HomePageComponent implements OnInit {
 
   sortBooks(sort: HTMLSelectElement) {
     this.sort = sort.value;
-    this.getAllBook({page: 0, size: 8, name: this.name, sort: this.sort});
+    this.getAllBook({page: 0, size: 10, name: this.name, sort: this.sort});
 
   }
 
@@ -79,7 +79,7 @@ export class HomePageComponent implements OnInit {
     const request = {};
     if ((this.currentPage) > 0) {
       request['page'] = this.currentPage - 1;
-      request['size'] = 8;
+      request['size'] = 10;
       request['name'] = this.name;
       request['sort'] = this.sort;
       this.getAllBook(request);
@@ -90,7 +90,7 @@ export class HomePageComponent implements OnInit {
     const request = {};
     if ((this.currentPage + 1) < this.totalPages) {
       request['page'] = this.currentPage + 1;
-      request['size'] = 8;
+      request['size'] = 10;
       request['name'] = this.name;
       request['sort'] = this.sort;
       this.getAllBook(request);
@@ -99,7 +99,7 @@ export class HomePageComponent implements OnInit {
 
   searchingBook(search: HTMLInputElement | HTMLSelectElement) {
     this.name = search.value;
-    this.getAllBook({page: 0, size: 8, name: this.name, sort: this.sort});
+    this.getAllBook({page: 0, size: 10, name: this.name, sort: this.sort});
   }
 
   addToCart(item: BookDto, $event) {
@@ -128,6 +128,6 @@ export class HomePageComponent implements OnInit {
 
   resetSearch() {
     this.searchInput.nativeElement.value = '';
-    this.getAllBook({page: 0, size: 8});
+    this.getAllBook({page: 0, size: 10});
   }
 }
